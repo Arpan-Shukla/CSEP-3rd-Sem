@@ -1,0 +1,62 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int n, key;
+
+    cout << "Enter size of array: ";
+    cin >> n;
+
+    int arr[n];
+
+    cout << "Enter sorted array elements: ";
+    for(int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
+
+    cout << "Enter element: ";
+    cin >> key;
+
+    int low = 0, high = n - 1;
+    int lower = n, upper = n;
+
+    while(low <= high)
+    {
+        int mid = low + (high - low) / 2;
+
+        if(arr[mid] >= key)
+        {
+            lower = mid;
+            high = mid - 1;
+        }
+        else
+        {
+            low = mid + 1;
+        }
+    }
+
+    low = 0;
+    high = n - 1;
+
+    while(low <= high)
+    {
+        int mid = low + (high - low) / 2;
+
+        if(arr[mid] > key)
+        {
+            upper = mid;
+            high = mid - 1;
+        }
+        else
+        {
+            low = mid + 1;
+        }
+    }
+
+    cout << "Lower bound: " << lower << endl;
+    cout << "Upper bound: " << upper;
+
+    return 0;
+}
